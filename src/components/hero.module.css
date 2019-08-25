@@ -14,7 +14,7 @@
   max-height: 400px;
 }
 
-.heroDetails {
+.heroContainer {
   position: absolute;
   background: rgba(0, 0, 0, 0.7);
   left: 50%;
@@ -22,16 +22,18 @@
   transform: translate(-50%, 0);
   font-size: 14px;
   padding: 0 0.5em;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media(min-width: 600px) {
-  .heroDetails {
+  .heroContainer {
     font-size: 16px;
   }
 }
 
 @media(min-width: 1000px) {
-  .heroDetails {
+  .heroContainer {
     font-size: 20px;
   }
 }

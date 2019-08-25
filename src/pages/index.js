@@ -3,17 +3,25 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
+import Img from 'gatsby-image'
+
+import heroStyles from '../components/hero.module.css'
+import Clock from '../components/clock';
 
 const RootIndex = ({data}) => {
   const siteTitle = get(data, 'site.siteMetadata.title')
   const posts = get(data, 'allContentfulBlogPost.edges')
-  const [author] = get(data, 'allContentfulPerson.edges')
+  const [husband, wife] = get(data, 'allContentfulPerson.edges')
 
   return (
     <div style={{ background: '#fff' }}>
       <Helmet title={siteTitle} />
-      <Hero data={author.node} />
-      <div className="wrapper">
+      <div className={heroStyles.hero}>
+        <Img className={heroStyles.heroImage} sizes={husband.node.heroImage.sizes} />
+        <Clock className={heroStyles.heroContainer} deadline="January, 18, 2020" />
+      </div>
+      
+      {/* <div className="wrapper">
         <h2 className="section-headline">Recent articles</h2>
         <ul className="article-list">
           {posts.map(({ node }) => {
@@ -24,7 +32,7 @@ const RootIndex = ({data}) => {
             )
           })}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -53,7 +61,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(filter: { id: { eq: "c15jwOBqpxqSAOy2eOO4S0m" } }) {
+    allContentfulPerson(filter: {node_locale: {eq: "en-US"}}) {
       edges {
         node {
           name
@@ -65,8 +73,7 @@ export const pageQuery = graphql`
             sizes(
               maxWidth: 1180
               maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
+              resizingBehavior: FILL
             ) {
               ...GatsbyContentfulSizes_withWebp
             }

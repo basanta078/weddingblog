@@ -7,6 +7,9 @@
   height: 20vh;
   max-height: 100px;
   font-size: 1.25em;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .navigationItem {

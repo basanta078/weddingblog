@@ -7,7 +7,6 @@ import Navigation from '../components/navigation'
 const Template = ({location, children}) => {
   return (
     <Container>
-      <Navigation />
       {children()}
     </Container>
   );
