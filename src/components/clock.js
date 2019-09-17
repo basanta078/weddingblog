@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProgressRing from './progress-ring';
+import Media from 'react-media';
 
 import styles from './clock.module.css'
 
@@ -50,11 +51,23 @@ function leading0(num) {
 function Counter ({number, label, progress}){
   return (
     <div className={styles.clockElement}>
-      <ProgressRing
-        radius={ 48 }
-        stroke={ 3 }
-        progress={ progress}
-      />
+      <Media query="(max-width: 599px)">
+        {matches =>
+          matches ? (
+            <ProgressRing
+              radius={ 36 }
+              stroke={ 1 }
+              progress={ progress}
+            />
+          ) : (
+            <ProgressRing
+              radius={ 84 }
+              stroke={ 2 }
+              progress={ progress}
+            />)
+        }
+      </Media>
+      
       <div style={{display: 'flex', flexDirection: 'column', justifyContent: ''}}>
         <text className={styles.counterNumber}>{leading0(number)}</text>
         <text className={styles.counterLabel}>{label}</text>

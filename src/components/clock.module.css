@@ -8,9 +8,9 @@
   line-height: 1;
 }
 
-@media(min-width: 300px) {
-  .clock {
-    font-size: 16px;
+@media(min-width: 375px) {
+  .counterLabel {
+    font-size: .75em;
   }
   .counterNumber {
     font-size: 1.25em;
@@ -18,11 +18,12 @@
 }
 
 @media(min-width: 600px) {
-  .clock {
-    font-size: 20px;
+  .counterLabel {
+    font-size: 1em;
   }
+
   .counterNumber {
-    font-size: 2em;
+    font-size: 3em;
   }
 }
 .clockElement {
@@ -43,10 +44,5 @@
 
 
 .counterNumber {
-  font-family: 'Vidaloka, serif';
   margin: 0;
-}
-
-.counterLabel {
-  font-size: 16px;
 }
